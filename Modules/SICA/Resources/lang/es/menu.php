@@ -2,6 +2,8 @@
 
 return [
 	'Home' => 'Inicio',
+	'Staff'=> 'Funcionarios',
+	'Profile'=> 'Cuenta',
 	'Administrator' => 'Administrador',
 	'Application' => 'Aplicación',
 	'academic_coordinator' => 'Coordinador académico',

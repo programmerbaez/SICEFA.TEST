@@ -26,9 +26,9 @@ class Course extends Model implements Auditable
 
     protected $fillable = [// Atributos modificables (asignación masiva)
         'code',
-        'star_date',
+        'start_date',
         'end_date',
-        'star_production_date',
+        'start_production_date',
         'school_end_date',
         'status',
         'modality',

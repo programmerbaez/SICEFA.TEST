@@ -2,6 +2,8 @@
 
 return [
 	'Home' => 'Inicio',
+	'Staff' => 'Funcionario',
+	'Profile'=> 'Cuenta',
 	'Contact' => 'Contacto',
 	'Notifications' => 'Notificaciones',
 	'new messages' => 'Mensajes nuevos',

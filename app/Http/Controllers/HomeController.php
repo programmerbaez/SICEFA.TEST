@@ -36,10 +36,10 @@ class HomeController extends Controller
         }
 
         $apps = App::all();
-        $productiveunit = ProductiveUnit::where('name','=','Punto de venta')->pluck('id');
-        $warehouse = Warehouse::where('name','=','Punto de venta')->pluck('id');
+        $productiveunit = ProductiveUnit::where('name','=','Punto de venta')->value('id');
+        $warehouse = Warehouse::where('name','=','Punto de venta')->value('id');
         $kind_of_purchase = KindOfPurchase::where('name','=','Producción de centro')->first();
-        $productiveunit_warehouse = ProductiveUnitWarehouse::where('productive_unit_id',$productiveunit)->where('warehouse_id',$warehouse)->pluck('id');
+        $productiveunit_warehouse = ProductiveUnitWarehouse::where('productive_unit_id',$productiveunit)->where('warehouse_id',$warehouse)->value('id');
         $category = Category::whereHas('elements.inventories', function ($query) use ($productiveunit_warehouse) {
             $query->where('productive_unit_warehouse_id', $productiveunit_warehouse)->where('amount','>','0');
         })->whereHas('elements', function ($query) use ($kind_of_purchase) {

@@ -14,3 +14,25 @@ yarn-error.log
 /.vscode
 composer.lock
 composer.json
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+.vs/
+
+# Backups y archivos temporales
+*.zip
+*.sql
+
+# Laravel
+/vendor/
+/node_modules/
+/storage/*.key
+/storage/app/public/*
+.env
+.env.*
+!.env.example

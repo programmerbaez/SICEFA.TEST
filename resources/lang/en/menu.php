@@ -2,6 +2,8 @@
 
 return [
 	'Home' => 'Home',
+	'Staff' => 'Staff',
+	'Profile'=> 'Account',
 	'Contact' => 'Contact',
 	'Notifications' => 'Notifications',
 	'new messages' => 'new messages',

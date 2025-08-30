@@ -9,7 +9,7 @@ Route::middleware(['lang'])->group(function () {  // Middleware para la internza
         Route::controller(CAFETOController::class)->group(function () { //Agrega por única vez el controlador, para que seguidamente sea solo.
             Route::get('index', 'index')->name('cefa.cafeto.index'); // Vista principal y pública de la aplicación (Pública)
             Route::get('developers', 'devs')->name('cefa.cafeto.devs'); // Vista de creditos y desarrolladores, pública de la aplicación (Pública)
-            Route::get('information', 'info')->name('cefa.cafeto.info'); // Vista mas info sobre cafeto y pública de la aplicación (Pública)
+            Route::get('information', 'info')->name(name: 'cefa.cafeto.info'); // Vista mas info sobre cafeto y pública de la aplicación (Pública)
             Route::get('admin', 'admin')->name('cafeto.admin.index'); // Vista principal del Administrador (Administrador)
             Route::get('cashier', 'cashier')->name('cafeto.cashier.index'); // Vista principal del Cajero (Cajero)
             Route::get('admin/configuration', 'configuration')->name('cafeto.admin.configuration.index'); // Vista de configuracion, como generar un ticket o factura de prueba y verificar la conexion de la impresora, etc. (Administrador)

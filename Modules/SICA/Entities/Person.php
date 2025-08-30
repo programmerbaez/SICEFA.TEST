@@ -218,6 +218,67 @@ class Person extends Model implements Auditable
     public function users(){ // Accede a todos los usuarios registrados con esta persona
         return $this->hasMany(User::class);
     }
+
+    // Relaciones para el módulo SGA (Sistema de Gestión de Aprendices)
+    // Solo las tablas que realmente existen en la base de datos
+    
+    public function conditions()
+    {
+        return $this->hasOne(\Modules\SGA\Entities\ApprenticeCondition::class, 'person_id');
+    }
+
+    public function socioeconomic()
+    {
+        return $this->hasOne(\Modules\SGA\Entities\SocioeconomicInformation::class, 'person_id');
+    }
+
+    public function course()
+    {
+        return $this->hasOne(\Modules\SGA\Entities\Course::class, 'person_id');
+    }
+
+    public function representativeLegal()
+    {
+        return $this->hasOne(\Modules\SGA\Entities\RepresentativeLegal::class, 'person_id');
+    }
+
+    public function swornStatement()
+    {
+        return $this->hasOne(\Modules\SGA\Entities\SwornStatement::class, 'person_id');
+    }
+
+
+    // La información de vivienda y SISBEN ya está en la tabla people
+    // socioeconomical_status (estrato 1-6)
+    // sisben_level (A, B, C, D)
+    
+    // La información médica ya está en la tabla people
+    // eps_id (relación con la tabla e_p_s)
+
+    /**
+     * Método de debug para verificar las relaciones SGA
+     */
+    public function debugRelations()
+    {
+        try {
+            $conditions = $this->conditions;
+            $socioeconomic = $this->socioeconomic;
+            
+            return [
+                'conditions_exists' => $conditions ? 'Sí' : 'No',
+                'conditions_class' => $conditions ? get_class($conditions) : 'No existe',
+                'socioeconomic_exists' => $socioeconomic ? 'Sí' : 'No',
+                'socioeconomic_class' => $socioeconomic ? get_class($socioeconomic) : 'No existe',
+                'person_class' => get_class($this),
+                'person_id' => $this->id
+            ];
+        } catch (Exception $e) {
+            return [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ];
+        }
+    }
     
 
 
